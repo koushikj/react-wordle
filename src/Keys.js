@@ -2,14 +2,16 @@ import React from 'react';
 
 class Keys extends React.Component {
 
-  setLetter = (tb) => {
+  setLetter = (button) => {
     var idPos = parseInt(this.props.cursor);
-    document.getElementById(idPos).value = tb.target.dataset.key;
-    document.getElementById(idPos).dispatchEvent(new Event('change', { bubbles: true }));
-    var nextFocus = idPos + 1;
-    document.getElementById(nextFocus).disabled = false;
-    document.getElementById(nextFocus).focus();
-    this.props.updateCursorPosition(nextFocus);
+    var tb=document.getElementById(idPos);
+    tb.value = button.target.dataset.key;
+    this.props.goToNextBox(tb);
+    // //document.getElementById(idPos).dispatchEvent(new Event('change', { bubbles: true }));
+    // var nextFocus = idPos + 1;
+    // document.getElementById(nextFocus).disabled = false;
+    // document.getElementById(nextFocus).focus();
+    // this.props.updateCursorPosition(nextFocus);
   };
 
   render() {

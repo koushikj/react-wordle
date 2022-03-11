@@ -12,6 +12,7 @@ class Board extends React.Component {
           cursor={this.props.cursor}
           word={this.props.word}
           updateCursorPosition={this.props.updateCursorPosition}
+          goToNextBox={this.props.goToNextBox}
           onClick={() => this.props.onClick(id)}
         />
       );
@@ -56,7 +57,11 @@ class Board extends React.Component {
             {this.renderSquare(24, true)}
           </div>
           <br />
-          <Keys cursor={this.props.cursor} updateCursorPosition={this.props.updateCursorPosition}/>
+          <Keys 
+            cursor={this.props.cursor} 
+            updateCursorPosition={this.props.updateCursorPosition}
+            goToNextBox={this.props.goToNextBox}
+            />
         </div>
       );
     }
