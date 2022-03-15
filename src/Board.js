@@ -56,6 +56,13 @@ class Board extends React.Component {
             {this.renderSquare(23, true)}
             {this.renderSquare(24, true)}
           </div>
+          <div className="board-row">
+            {this.renderSquare(25, true)}
+            {this.renderSquare(26, true)}
+            {this.renderSquare(27, true)}
+            {this.renderSquare(28, true)}
+            {this.renderSquare(29, true)}
+          </div>
           <br />
           <Keys 
             cursor={this.props.cursor} 

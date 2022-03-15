@@ -67,24 +67,31 @@ class Game extends React.Component {
   };
 
   wrongGuess = (word, position) => {
+    var lword = word.toLowerCase();
     word = word.toUpperCase();
     for (var i = position - 4; i <= position; i++) {
       var charPos = i % 5
       if (this.state.word.indexOf(word.charAt(charPos)) > -1) {
         //character exist
-        if (word.charAt(i) === this.state.word.charAt(charPos)) {
+        if (word.charAt(charPos) === this.state.word.charAt(charPos)) {
           //character exist at right position
           document.getElementById(i).style.backgroundColor = "#538d4e";
           document.getElementById(i).style.color = "white";
+          document.getElementById(lword.charAt(charPos)).style.backgroundColor = "#538d4e";
+          document.getElementById(lword.charAt(charPos)).style.color = "white";
         } else {
           // character exist at wrong position
-          document.getElementById(i).style.backgroundColor = "#b59f3b";
+          document.getElementById(i).style.backgroundColor = "#d7b313";
           document.getElementById(i).style.color = "black";
+          document.getElementById(lword.charAt(charPos)).style.backgroundColor = "#d7b313";
+          document.getElementById(lword.charAt(charPos)).style.color = "black";
         }
       } else {
-        //character not exit - red
-        document.getElementById(i).style.backgroundColor = "#3a3a3c";
+        //character not exit
+        document.getElementById(i).style.backgroundColor = "#5f5f60";
         document.getElementById(i).style.color = "white";
+        document.getElementById(lword.charAt(charPos)).style.backgroundColor = "#5f5f60";
+        document.getElementById(lword.charAt(charPos)).style.color = "white";
       }
     }
   };
@@ -103,7 +110,7 @@ class Game extends React.Component {
   validateWord = (word, position) => {
     position = parseInt(position);
     if (dictionarySet.has(word)) { //valid word
-      if (position === 24) {
+      if (position === 29) {
         toast.info("Game Over!, the valid word is :" + this.state.word, {
           position: toast.POSITION.BOTTOM_CENTER
         });
@@ -156,7 +163,7 @@ class Game extends React.Component {
 
     val = document.getElementById(idPos).value;
     if (val.length !== 0) {
-      if (idPos === 4 || idPos === 9 || idPos === 14 || idPos === 19 || idPos === 24) {
+      if (idPos === 4 || idPos === 9 || idPos === 14 || idPos === 19 || idPos === 24 || idPos === 29) {
         //end of one word, check...
         var wordIs = this.getWordFromPosition(idPos);
         console.log('check for word :' + wordIs);
